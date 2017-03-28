@@ -825,18 +825,22 @@ L.Map = L.Evented.extend({
 			// @pane tilePane: HTMLElement = 2
 			// Pane for tile layers
 			this.createPane('tilePane', this._rotatePane);
-			// @pane overlayPane: HTMLElement = 4
-			// Pane for overlays like polylines and polygons
-			this.createPane('shadowPane', this._rotatePane);
 			// @pane shadowPane: HTMLElement = 5
 			// Pane for overlay shadows (e.g. marker shadows)
 			this.createPane('overlayPane', this._rotatePane);
+
+
+			this._norotatePane = this.createPane('norotatePane', this._mapPane);
+
+			// @pane overlayPane: HTMLElement = 4
+			// Pane for overlays like polylines and polygons
+			this.createPane('shadowPane', this._norotatePane);
 			// @pane markerPane: HTMLElement = 6
 			// Pane for marker icons
-			this.createPane('markerPane', this._rotatePane);
+			this.createPane('markerPane', this._norotatePane);
 			// @pane popupPane: HTMLElement = 7
 			// Pane for popups.
-			this.createPane('popupPane', this._rotatePane);
+			this.createPane('popupPane', this._norotatePane);
 		}
 		else {
 			// @pane tilePane: HTMLElement = 2

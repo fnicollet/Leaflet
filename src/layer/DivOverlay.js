@@ -183,8 +183,8 @@ L.DivOverlay = L.Layer.extend({
 		if (this._zoomAnimated) {
 			if (this._map._rotate) {
 				// rotation relative to the marker's anchor
-				var popupAnchor = pos.add([-this._containerLeft, this._container.offsetHeight + this._tipContainer.offsetHeight - offset.y]);
-				L.DomUtil.setPosition(this._container, pos.add(anchor), -this._map._bearing || 0, popupAnchor);
+				var mapPivot = (this._map._pivot || new L.Point(0, 0)).clone().add(anchor);
+				L.DomUtil.setPosition(this._container, pos.add(anchor), this._map._bearing || 0, mapPivot);
 			} else {
 				L.DomUtil.setPosition(this._container, pos.add(anchor));
 			}

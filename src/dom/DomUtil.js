@@ -196,10 +196,17 @@ L.DomUtil = {
 		} else {
 			pos = pos.rotateFrom(bearing, pivot);
 
-			el.style[L.DomUtil.TRANSFORM] =
-				'translate3d(' + pos.x + 'px,' + pos.y + 'px' + ',0)' +
-				(scale ? ' scale(' + scale + ')' : '') +
-				' rotate(' + bearing + 'rad)';
+			if(el.classList.contains('leaflet-rotate-pane')) {
+				el.style[L.DomUtil.TRANSFORM] =
+					'translate3d(' + pos.x + 'px,' + pos.y + 'px' + ',0)' +
+					(scale ? ' scale(' + scale + ')' : '') +
+					' rotate(' + bearing + 'rad)';
+			}
+			else {
+				el.style[L.DomUtil.TRANSFORM] =
+					'translate3d(' + pos.x + 'px,' + pos.y + 'px' + ',0)' +
+					(scale ? ' scale(' + scale + ')' : '');
+			}
 		}
 	},
 

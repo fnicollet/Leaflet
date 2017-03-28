@@ -254,9 +254,10 @@ L.Marker = L.Layer.extend({
 	},
 
 	_setPos: function (pos) {
-		var iconAnchor = this.options.icon.options.iconAnchor || new L.Point(0, 0);
+		// var iconAnchor = this.options.icon.options.iconAnchor || new L.Point(0, 0);
+		var mapPivot   = this._map._pivot || new L.Point(0, 0);
 		if (this._map._rotate && this.options.markerRotate) {
-			L.DomUtil.setPosition(this._icon, pos, -this._map._bearing || 0, pos.add(iconAnchor));
+			L.DomUtil.setPosition(this._icon, pos, this._map._bearing || 0, mapPivot);
 		} else {
 			L.DomUtil.setPosition(this._icon, pos);
 		}
@@ -265,9 +266,9 @@ L.Marker = L.Layer.extend({
 		if (this._shadow) {
 			if (this._map._rotate && this.options.markerRotate) {
 				if (this.options.icon.options.shadowAnchor){
-					L.DomUtil.setPosition(this._shadow, pos, -this._map._bearing || 0, pos.add(this.options.icon.options.shadowAnchor));
+					L.DomUtil.setPosition(this._shadow, pos, this._map._bearing || 0, mapPivot);
 				} else {
-					L.DomUtil.setPosition(this._shadow, pos, -this._map._bearing || 0, pos.add(iconAnchor));
+					L.DomUtil.setPosition(this._shadow, pos, this._map._bearing || 0, mapPivot);
 				}
 			} else {
 				L.DomUtil.setPosition(this._shadow, pos);
