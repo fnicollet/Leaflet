@@ -177,17 +177,12 @@ L.DivOverlay = L.Layer.extend({
 		    offset = L.point(this.options.offset),
 		    anchor = this._getAnchor();
 
-		var bottom = this._containerBottom = -offset.y,
-		    left = this._containerLeft = -Math.round(this._containerWidth / 2) + offset.x;
-
 		if (this._zoomAnimated) {
 			if (this._map._rotate) {
 				// rotation relative to the marker's anchor
-				var mapPivot = (this._map._pivot || new L.Point(0, 0)).clone().add(anchor);
-				L.DomUtil.setPosition(this._container, pos.add(anchor), this._map._bearing || 0, mapPivot);
-			} else {
-				L.DomUtil.setPosition(this._container, pos.add(anchor));
+				pos = pos.rotate(this._map._bearing).add(this._map._getRotatePanePos());
 			}
+			L.DomUtil.setPosition(this._container, pos.add(anchor));
 		} else {
 			offset = offset.add(pos).add(anchor);
 		}
