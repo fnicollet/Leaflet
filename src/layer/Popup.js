@@ -227,10 +227,12 @@ L.Popup = L.DivOverlay.extend({
 		    marginBottom = parseInt(L.DomUtil.getStyle(this._container, 'marginBottom'), 10) || 0,
 		    containerHeight = this._container.offsetHeight + marginBottom,
 		    containerWidth = this._containerWidth,
-		    offset = new L.Point(this._containerLeft, -containerHeight - this._containerBottom);
+		    layerPos = new L.Point(this._containerLeft, -containerHeight - this._containerBottom);
 
-		var containerPos = L.DomUtil.getPosition(this._container)._add(this._map._getMapPanePos())._add(offset),
-		    padding   = L.point(this.options.autoPanPadding),
+		layerPos._add(L.DomUtil.getPosition(this._container));
+
+		var containerPos = layerPos._add(this._map._getMapPanePos()),
+		    padding = L.point(this.options.autoPanPadding),
 		    paddingTL = L.point(this.options.autoPanPaddingTopLeft || padding),
 		    paddingBR = L.point(this.options.autoPanPaddingBottomRight || padding),
 		    size = map.getSize(),
