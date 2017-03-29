@@ -156,6 +156,9 @@ L.Tooltip = L.DivOverlay.extend({
 
 	_updatePosition: function () {
 		var pos = this._map.latLngToLayerPoint(this._latlng);
+		if (this._map._rotate) {
+			pos = pos.rotate(this._map._bearing).add(this._map._getRotatePanePos());
+		}
 		this._setPosition(pos);
 	},
 
