@@ -61,10 +61,6 @@ L.Marker = L.Layer.extend({
 
 		// FIXME: shadowPane is no longer a valid option
 		nonBubblingEvents: ['click', 'dblclick', 'mouseover', 'mouseout', 'contextmenu'],
-
-		// @option markerRotate: Boolean = true
-		// Whether the marker remains upright when rotating the map
-		markerRotate: true
 	},
 
 	/* @section
@@ -255,7 +251,7 @@ L.Marker = L.Layer.extend({
 
 	_setPos: function (pos) {
 
-		if(this.options.markerRotate) {
+		if(this._map._rotate) {
 			pos = pos.rotate(this._map._bearing).add(this._map._getRotatePanePos());
 		}
 
