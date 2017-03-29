@@ -179,7 +179,6 @@ L.DivOverlay = L.Layer.extend({
 
 		if (this._zoomAnimated) {
 			if (this._map._rotate) {
-				// rotation relative to the marker's anchor
 				pos = pos.rotate(this._map._bearing).add(this._map._getRotatePanePos());
 			}
 			L.DomUtil.setPosition(this._container, pos.add(anchor));
