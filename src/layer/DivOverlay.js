@@ -179,7 +179,7 @@ L.DivOverlay = L.Layer.extend({
 
 		if (this._zoomAnimated) {
 			if (this._map._rotate) {
-				pos = this._map.rotatePanePointToNorotatePanePoint(pos);
+				pos = this._map.rotatedPointToMapPanePoint(pos);
 			}
 			L.DomUtil.setPosition(this._container, pos.add(anchor));
 		} else {

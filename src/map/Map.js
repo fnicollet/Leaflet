@@ -700,11 +700,17 @@ L.Map = L.Evented.extend({
 		}
 	},
 
-	rotatePanePointToNorotatePanePoint: function (point) {
+	// @method rotatedPointToMapPanePoint(point: Point): Point
+	// Converts a coordinate from the rotated pane reference system
+	// to the reference system of the not rotated map pane.
+	rotatedPointToMapPanePoint: function (point) {
 		return L.point(point).rotate(this._bearing)._add(this._getRotatePanePos());
 	},
 
-	norotatePanePointToRotatePanePoint: function (point) {
+	// @method mapPanePointToRotatedPoint(point: Point): Point
+	// Converts a coordinate from the not rotated map pane reference system
+	// to the reference system of the rotated pane.
+	mapPanePointToRotatedPoint: function (point) {
 		return L.point(point)._subtract(this._getRotatePanePos()).rotate(-this._bearing);
 	},
 

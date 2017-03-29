@@ -157,7 +157,7 @@ L.Tooltip = L.DivOverlay.extend({
 	_updatePosition: function () {
 		var pos = this._map.latLngToLayerPoint(this._latlng);
 		if (this._map._rotate) {
-			pos = this._map.rotatePanePointToNorotatePanePoint(pos);
+			pos = this._map.rotatedPointToMapPanePoint(pos);
 		}
 		this._setPosition(pos);
 	},
@@ -173,7 +173,7 @@ L.Tooltip = L.DivOverlay.extend({
 	_animateZoom: function (e) {
 		var pos = this._map._latLngToNewLayerPoint(this._latlng, e.zoom, e.center);
 		if (this._map._rotate) {
-			pos = this._map.rotatePanePointToNorotatePanePoint(pos);
+			pos = this._map.rotatedPointToMapPanePoint(pos);
 		}
 		this._setPosition(pos);
 	},

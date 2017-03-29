@@ -215,7 +215,7 @@ L.Popup = L.DivOverlay.extend({
 		var pos = this._map._latLngToNewLayerPoint(this._latlng, e.zoom, e.center),
 			anchor = this._getAnchor();
 		if (this._map._rotate) {
-			pos = this._map.rotatePanePointToNorotatePanePoint(pos);
+			pos = this._map.rotatedPointToMapPanePoint(pos);
 		}
 		L.DomUtil.setPosition(this._container, pos.add(anchor));
 	},
