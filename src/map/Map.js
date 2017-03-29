@@ -741,10 +741,10 @@ L.Map = L.Evented.extend({
 	setBearing: function(theta) {
 		if (!L.Browser.any3d || !this._rotate) { return; }
 
+		var rotatePanePos = this._getRotatePanePos();
 		var halfSize = this.getSize().divideBy(2);
 		this._pivot = this._getMapPanePos().clone().multiplyBy(-1).add(halfSize);
 
-		var rotatePanePos = this._getRotatePanePos();
 		rotatePanePos = rotatePanePos.rotateFrom(-this._bearing, this._pivot);
 
 		this._bearing = theta * L.DomUtil.DEG_TO_RAD; // TODO: mod 360
