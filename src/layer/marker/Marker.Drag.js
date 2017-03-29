@@ -83,7 +83,7 @@ L.Handler.MarkerDrag = L.Handler.extend({
 
 		if (marker._map._rotate) {
 			// Reverse calculation from mapPane coordinates to rotatePane coordinates
-			iconPos = iconPos._subtract(marker._map._getRotatePanePos()).rotate(-marker._map._bearing);
+			iconPos = marker._map.norotatePanePointToRotatePanePoint(iconPos);
 		}
 		latlng = marker._map.layerPointToLatLng(iconPos);
 

@@ -700,6 +700,14 @@ L.Map = L.Evented.extend({
 		}
 	},
 
+	rotatePanePointToNorotatePanePoint: function (point) {
+		return L.point(point).rotate(this._bearing)._add(this._getRotatePanePos());
+	},
+
+	norotatePanePointToRotatePanePoint: function (point) {
+		return L.point(point)._subtract(this._getRotatePanePos()).rotate(-this._bearing);
+	},
+
 	// @method containerPointToLatLng(point: Point): Point
 	// Given a pixel coordinate relative to the map container, returns
 	// the corresponding geographical coordinate (for the current zoom level).

@@ -252,7 +252,7 @@ L.Marker = L.Layer.extend({
 	_setPos: function (pos) {
 
 		if(this._map._rotate) {
-			pos = pos.rotate(this._map._bearing).add(this._map._getRotatePanePos());
+			pos = this._map.rotatePanePointToNorotatePanePoint(pos);
 		}
 
 		L.DomUtil.setPosition(this._icon, pos);
