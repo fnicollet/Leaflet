@@ -681,7 +681,7 @@ L.Map = L.Evented.extend({
 				.subtract(this._getRotatePanePos());
 		}
 		else {
-		return L.point(point).subtract(this._getMapPanePos());
+			return L.point(point).subtract(this._getMapPanePos());
 		}
 	},
 
@@ -696,7 +696,7 @@ L.Map = L.Evented.extend({
 				.add(this._getMapPanePos());
 		}
 		else {
-		return L.point(point).add(this._getMapPanePos());
+			return L.point(point).add(this._getMapPanePos());
 		}
 	},
 
@@ -821,19 +821,17 @@ L.Map = L.Evented.extend({
 
 		if (this._rotate) {
 			this._rotatePane = this.createPane('rotatePane', this._mapPane);
+			this._norotatePane = this.createPane('norotatePane', this._mapPane);
 
 			// @pane tilePane: HTMLElement = 2
 			// Pane for tile layers
 			this.createPane('tilePane', this._rotatePane);
-			// @pane shadowPane: HTMLElement = 5
-			// Pane for overlay shadows (e.g. marker shadows)
-			this.createPane('overlayPane', this._rotatePane);
-
-
-			this._norotatePane = this.createPane('norotatePane', this._mapPane);
-
 			// @pane overlayPane: HTMLElement = 4
 			// Pane for overlays like polylines and polygons
+			this.createPane('overlayPane', this._rotatePane);
+			
+			// @pane shadowPane: HTMLElement = 5
+			// Pane for overlay shadows (e.g. marker shadows)
 			this.createPane('shadowPane', this._norotatePane);
 			// @pane markerPane: HTMLElement = 6
 			// Pane for marker icons
