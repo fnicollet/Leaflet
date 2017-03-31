@@ -267,7 +267,7 @@ L.Marker = L.Layer.extend({
 	},
 
 	_updateZIndex: function (offset) {
-		this._icon.style.zIndex = this._zIndex + offset;
+		this._icon.style.zIndex = Math.round(this._zIndex + offset);
 	},
 
 	_animateZoom: function (opt) {
