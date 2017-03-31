@@ -700,6 +700,20 @@ L.Map = L.Evented.extend({
 		}
 	},
 
+	// @method rotatedPointToMapPanePoint(point: Point): Point
+	// Converts a coordinate from the rotated pane reference system
+	// to the reference system of the not rotated map pane.
+	rotatedPointToMapPanePoint: function (point) {
+		return L.point(point).rotate(this._bearing)._add(this._getRotatePanePos());
+	},
+
+	// @method mapPanePointToRotatedPoint(point: Point): Point
+	// Converts a coordinate from the not rotated map pane reference system
+	// to the reference system of the rotated pane.
+	mapPanePointToRotatedPoint: function (point) {
+		return L.point(point)._subtract(this._getRotatePanePos()).rotate(-this._bearing);
+	},
+
 	// @method containerPointToLatLng(point: Point): Point
 	// Given a pixel coordinate relative to the map container, returns
 	// the corresponding geographical coordinate (for the current zoom level).
@@ -750,7 +764,7 @@ L.Map = L.Evented.extend({
 		this._bearing = theta * L.DomUtil.DEG_TO_RAD; // TODO: mod 360
 		this._rotatePanePos = rotatePanePos.rotateFrom(this._bearing, this._pivot);
 
-		L.DomUtil.setPosition(this._rotatePane, this._rotatePanePos, this._bearing, this._rotatePanePos);
+		L.DomUtil.setPosition(this._rotatePane, rotatePanePos, this._bearing, this._pivot);
 
 		this.fire('rotate');
 	},
