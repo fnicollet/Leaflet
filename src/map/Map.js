@@ -681,7 +681,7 @@ L.Map = L.Evented.extend({
 				.subtract(this._getRotatePanePos());
 		}
 		else {
-		return L.point(point).subtract(this._getMapPanePos());
+			return L.point(point).subtract(this._getMapPanePos());
 		}
 	},
 
@@ -696,7 +696,7 @@ L.Map = L.Evented.extend({
 				.add(this._getMapPanePos());
 		}
 		else {
-		return L.point(point).add(this._getMapPanePos());
+			return L.point(point).add(this._getMapPanePos());
 		}
 	},
 
@@ -845,22 +845,22 @@ L.Map = L.Evented.extend({
 		else {
 			// @pane tilePane: HTMLElement = 2
 			// Pane for tile layers
-		this.createPane('tilePane');
+			this.createPane('tilePane');
 			// @pane overlayPane: HTMLElement = 4
 			// Pane for overlays like polylines and polygons
-		this.createPane('shadowPane');
+			this.createPane('overlayPane');
 			// @pane shadowPane: HTMLElement = 5
 			// Pane for overlay shadows (e.g. marker shadows)
-		this.createPane('overlayPane');
+			this.createPane('shadowPane');
 			// @pane markerPane: HTMLElement = 6
 			// Pane for marker icons
-		this.createPane('markerPane');
-		// @pane tooltipPane: HTMLElement = 650
-		// Pane for tooltip.
-		this.createPane('tooltipPane');
-		// @pane popupPane: HTMLElement = 700
-		// Pane for `Popup`s.
-		this.createPane('popupPane');
+			this.createPane('markerPane');
+			// @pane tooltipPane: HTMLElement = 650
+			// Pane for tooltips.
+			this.createPane('tooltipPane');
+			// @pane popupPane: HTMLElement = 700
+			// Pane for popups.
+			this.createPane('popupPane');
 		}
 
 		if (!this.options.markerZoomAnimation) {
