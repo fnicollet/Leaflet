@@ -231,7 +231,7 @@ L.Popup = L.DivOverlay.extend({
 
 		layerPos._add(L.DomUtil.getPosition(this._container));
 
-		var containerPos = map.layerPointToContainerPoint(layerPos),
+		var containerPos = layerPos._add(this._map._getMapPanePos()),
 		    padding = L.point(this.options.autoPanPadding),
 		    paddingTL = L.point(this.options.autoPanPaddingTopLeft || padding),
 		    paddingBR = L.point(this.options.autoPanPaddingBottomRight || padding),
