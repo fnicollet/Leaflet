@@ -486,9 +486,13 @@ L.Map = L.Evented.extend({
 	// @method getBounds(): LatLngBounds
 	// Returns the geographical bounds visible in the current map view
 	getBounds: function () {
-		var bounds = this.getPixelBounds(),
-		    sw = this.unproject(bounds.getBottomLeft()),
-		    ne = this.unproject(bounds.getTopRight());
+		// var bounds = this.getPixelBounds(),
+		//     sw = this.unproject(bounds.getBottomLeft()),
+		//     ne = this.unproject(bounds.getTopRight());
+
+		var size = this.getSize();
+		var sw = this.layerPointToLatLng(this.containerPointToLayerPoint([0, size.y]));
+		var ne = this.layerPointToLatLng(this.containerPointToLayerPoint([size.x, 0]));
 
 		return new L.LatLngBounds(sw, ne);
 	},
