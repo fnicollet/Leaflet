@@ -488,9 +488,9 @@ L.Map = L.Evented.extend({
 	getBounds: function () {
 		var size = this.getSize();
 		var topleft     = this.layerPointToLatLng(this.containerPointToLayerPoint([0, 0])),
-			topright    = this.layerPointToLatLng(this.containerPointToLayerPoint([size.x, 0])),
-			bottomright = this.layerPointToLatLng(this.containerPointToLayerPoint([size.x, size.y])),
-			bottomleft  = this.layerPointToLatLng(this.containerPointToLayerPoint([0, size.y]));
+		    topright    = this.layerPointToLatLng(this.containerPointToLayerPoint([size.x, 0])),
+		    bottomright = this.layerPointToLatLng(this.containerPointToLayerPoint([size.x, size.y])),
+		    bottomleft  = this.layerPointToLatLng(this.containerPointToLayerPoint([0, size.y]));
 
 		// Use LatLngBounds' build-in constructor that automatically extends the bounds to fit the passed points
 		return new L.LatLngBounds([topleft, topright, bottomright, bottomleft]);
