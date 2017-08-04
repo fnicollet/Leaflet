@@ -152,11 +152,11 @@
 				.addLayer(osm)
 				.addLayer(path);
 
-		var marker1 = L.marker(kyiv	, { rotation: 0  , rotateWithView: true  }).addTo(map),
-			marker2 = L.marker(lnd	, { rotation: 0.3, rotateWithView: true  }).addTo(map),
-			marker3 = L.marker(dc	, { rotation: 0.9, rotateWithView: false }).addTo(map),
-			marker4 = L.marker(sf	, { rotation: 1.5, rotateWithView: false }).addTo(map),
-			marker5 = L.marker(trd	, { rotation: 2.4, rotateWithView: true  }).addTo(map);
+		var marker1 = L.marker(kyiv	, { rotation: 0  , draggable: true, rotateWithView: true  }).addTo(map),
+			marker2 = L.marker(lnd	, { rotation: 0.3, draggable: true, rotateWithView: true  }).addTo(map),
+			marker3 = L.marker(dc	, { rotation: 0.9, draggable: true, rotateWithView: false }).addTo(map),
+			marker4 = L.marker(sf	, { rotation: 1.5, draggable: true, rotateWithView: false }).addTo(map),
+			marker5 = L.marker(trd	, { rotation: 2.4, draggable: true, rotateWithView: true  }).addTo(map);
 
 		var loremIpsum = "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque.</p>";
 
