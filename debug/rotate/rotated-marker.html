@@ -120,7 +120,8 @@
 	</div>
 
 	<div>
-		<button onclick="randomRotateMarkers();">shake it</button>
+		<button onclick="randomRotateMarkers();">Rotate markers randomly</button>
+		Note: 2 markers on USA don't rotateWithView
 	</div>
 
 
@@ -151,31 +152,31 @@
 				.addLayer(osm)
 				.addLayer(path);
 
-		var marker1 = L.marker(kyiv	, { rotation: 0  , rotateWithView: true }).addTo(map),
-			marker2 = L.marker(lnd	, { rotation: 0.3, rotateWithView: true }).addTo(map),
-			marker3 = L.marker(dc	, { rotation: 0.9, rotateWithView: true }).addTo(map),
-			marker4 = L.marker(sf	, { rotation: 1.5, rotateWithView: true }).addTo(map),
-			marker5 = L.marker(trd	, { rotation: 2.4, rotateWithView: true }).addTo(map);
+		var marker1 = L.marker(kyiv	, { rotation: 0  , rotateWithView: true  }).addTo(map),
+			marker2 = L.marker(lnd	, { rotation: 0.3, rotateWithView: true  }).addTo(map),
+			marker3 = L.marker(dc	, { rotation: 0.9, rotateWithView: false }).addTo(map),
+			marker4 = L.marker(sf	, { rotation: 1.5, rotateWithView: false }).addTo(map),
+			marker5 = L.marker(trd	, { rotation: 2.4, rotateWithView: true  }).addTo(map);
 
 		var loremIpsum = "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p><p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque.</p>";
 
 		marker1.bindPopup(loremIpsum + '<p>Kyiv</p>').addTo(map);
 		marker2.bindPopup(loremIpsum + '<p>Lnd</p>').addTo(map);
-		marker3.bindPopup(loremIpsum + '<p>DC</p>').addTo(map);
-		marker4.bindPopup(loremIpsum + '<p>DF</p>').addTo(map);
+		marker3.bindPopup(loremIpsum + '<p>DC doesn\'t rotate with map.</p>').addTo(map);
+		marker4.bindPopup(loremIpsum + '<p>DF doesn\'t rotate with map.</p>').addTo(map);
 		marker5.bindPopup(loremIpsum + '<p>Trd</p>').addTo(map);
 
 		function randomRotateMarkers() {
-			function getDelta() { return Math.random() * Math.PI / 30 }
+			function getDelta() { return Math.random() * Math.PI / 30 + 0.1 }
 			function stepOn() {
 				for (var i = 0; i < markers.length; i++) {
 					markers[i].setRotation(markers[i].options.rotation + steps[i]);
 				}
-				if (--steps_left) setTimeout(stepOn, 50);
+				if (--steps_left) setTimeout(stepOn, 20);
 			}
 			var markers = [marker1, marker2, marker3, marker4, marker5];
 			var steps = [getDelta(), getDelta(), getDelta(), getDelta(), getDelta()];
-			var steps_left = 10;
+			var steps_left = 25;
 			stepOn();
 		}
 
